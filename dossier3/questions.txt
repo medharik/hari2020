@@ -1,0 +1,70 @@
+Question 1 :
+//importer  les classes 
+import java.util.List;
+import java.util.Set;
+import java.lang.Exception;
+import com.mongodb.DB;
+import com.mongodb.MongoClient;
+public class MongoDBJDBC {
+public static void main(String[] args) {
+  // Ouvrir une connexion avec un serveur MongoDb en utilsant le MongoClient
+MongoClient mongoClient = new MongoClient();
+//récupérer la liste  des  bases de données 
+List<String> databases = mongoClient.getDatabaseNames();
+// afficher les bases de données
+for (String dbName : databases) {
+System.out.println("- Database: " + dbName);
+//Connexion à chaque  base de données 
+DB db = mongoClient.getDB(dbName);
+//récupérer toutes les collections existantes pour la base de données 
+Set<String> collections = db.getCollectionNames();
+//afficher toutes les  collections
+for (String colName : collections) {
+System.out.println("\t + Collection: " + colName);
+}
+}
+//fermer la connexion au serveur mongo
+mongoClient.close();
+}
+}
+
+
+le résultat :
+
+ce code affiche toutes es bases de données et la liste des collections de chauqe base de données d'un serveur mongoDB
+
+
+
+Question 2
+Dans ce cadre, donnez la nouvelle structure pour stocker les informations des satellites.
+{
+"_id":ObjectId("..."),
+"name_satellite" : "...",
+"nom_pays" :"...",
+"operator_pays":"...",
+"owner":"...",
+"user":"...",
+"prupose":"..."
+}
+
+
+
+Question 3
+En vous aidant de la question 1, donnez le code JAVA pour récupérer les données de la collection
+coll_Satellite de la base satelliteDB.
+
+
+
+MongoClient mongoClient = new MongoClient();
+//Connexion à la base de données satelliteDB 
+DB db = mongoClient.getDB("satelliteDB");
+//récupérer toutes les collections  de la base de donnez satelliteDB
+MongoCollection<Document> collection=db.getCollection("coll_Satellite");
+//récupérer et afficher tous les documents de la collection coll_Satellite
+FindIterable<Document> iterateur = collection.find();
+      Iterator it = iterDoc.iterator();
+      while (it.hasNext()) {
+         System.out.println(it.next());
+      }
+mongoClient.close();
+

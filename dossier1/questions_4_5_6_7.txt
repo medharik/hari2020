@@ -1,0 +1,55 @@
+
+Question 4
+Un fichier .htaccess a été placé dans le répertoire du site web, quels sont les objectifs et les
+intérêts d’un tel fichier ?
+
+• Gérer l'accès à certains fichiers.
+• Ajouter un mime-type.
+• Protéger l'accès à un répertoire par un mot de
+passe.
+• Protéger l'accès à un fichier par un mot de passe.
+• Définir des pages d'erreurs personnalisées.
+• Principe des fichiers .htaccess
+
+
+Question 5
+Dans notre cas le contenu du fichier .htaccess est le suivant :
+RewriteEngine on
+RewriteRule ^([a-zA-Z1-9]+)/([a-zA-Z1-9]+)$ index.php?controller=$1& purpose =$2
+Comment pourrait-on s’en servir pour répondre à la question 3 ?
+
+
+
+RewriteEngine on
+RewriteRule ^([a-zA-Z1-9]+)/([a-zA-Z1-9]+)$ index.php?controller=$1& purpose =communications
+
+Que faut-il modifier dans le fichier ‘index.php’ pour l’utiliser ?
+il faut récupérer le paramètre purpose dans l'url
+$purpose=$_GET['purpose'];
+$rp=$link->prepare("select * from t_satellite where purpose = ?");
+$rp->execute([$purpose]);
+
+
+Question 6
+Expliquez les différences entre « valide » et « bien formé » pour un fichier XML.
+
+un document XML est bien formé si sa syntaxe est correcte.
+Un document XML valide  est un document XML bien formé qui se conforme aussi aux règles d'un modèle ou schéma de documents donné par une DTD ou un XSD.
+
+
+Question 7
+La technologie des services web est un moyen rapide de distribution de l'information entre clients,
+fournisseurs, partenaires commerciaux et leurs différentes plates-formes.
+Les services web sont basés sur le modèle SOA.
+Expliquez les différences entre Web service REST et SOAP.
+
+
+
+SOAP   |	REST
+1	SOAP est un protocole de message basé  le XML	REST est une architecture
+2	SOAP permet que le format XML (WSDL)  |	REST propose différents formats XML, JSON, CSV, etc
+3	SOAP utilise des services en appelant des RPC methodes |	REST utilise des services en appelant des URLs (PUT, GET, POST, DELETE)
+4	Non dépendance par rapport à la langue, la plate-forme et le transfert (SMTP, HTTP, etc) |	REST nécessite l'utilisation de HTTP uniquement
+5	SOAP requière plus de bande passante et de ressources que REST  | 	REST requière moins de bande passante et moins de ressources que SOAP
+6	SOAP est plus lent que REST   |	REST est plus rapide que SOAP
+7	JavaScript peut appeler SOAP mais l'implémentation est difficile  |	Une API peut facilement être appelée en JavaScript
